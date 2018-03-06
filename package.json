@@ -1,0 +1,23 @@
+{
+  "name": "iphaser-cli",
+  "version": "0.0.1-beta.1",
+  "description": "CLI for generate a game templete by Phaser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "iphaser": "bin/iphaser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SleepingCat-xiaohui/iphaser-cli.git"
+  },
+  "keywords": ["phaser", "html5", "game", "engine"],
+  "author": "2464891735@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SleepingCat-xiaohui/iphaser-cli/issues"
+  },
+  "homepage": "https://github.com/SleepingCat-xiaohui/iphaser-cli#readme"
+}
