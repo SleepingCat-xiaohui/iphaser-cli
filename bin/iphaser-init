@@ -1,0 +1,95 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const fs = require('fs-extra')
+const path = require('path')
+const chalk = require('chalk')
+// const ora = require('ora')
+const inquirer = require('inquirer')
+// const homedir = require('os').homedir()
+
+const config = require('../.iphaserconfig')
+
+/**
+ * Program
+ */
+program
+  .usage('[template-name] [project-name]')
+  .on('--help', () => {
+    console.log()
+    console.log(chalk.green('  Help info:'))
+    console.log()
+    console.log('    Each one is optional.')
+  })
+  .parse(process.argv)
+
+/**
+ * select template
+ */
+async function selectTemplate () {
+  return inquirer.prompt({
+    type: 'list',
+    name: 'path',
+    message: 'choose one template:',
+    default: 'default',
+    choices: config.templates.map((t) => ({
+      name: t.name + '(' + t.desc + ').',
+      short: t.name,
+      value: t.path
+    }))
+  })
+}
+
+/**
+ * getTemplatePath
+ */
+async function getTemplatePath (name) {
+  let templatePath
+  if (!name) {
+    templatePath = (await selectTemplate()).path
+  } else {
+    let template = config.templates.find(t => t.name === name)
+    if (!template) {
+      console.log(chalk.yellow('The template you input is not exsit in the list...'))
+      templatePath = (await selectTemplate()).path
+    } else {
+      templatePath = config.templates.find(t => t.name === name).path
+    }
+  }
+  return path.resolve(__dirname, '../', templatePath)
+}
+
+/**
+ * getProjectPath
+ */
+async function getProjectPath (name) {
+  if (!name) {
+    let { inCurrentPath } = await inquirer.prompt({
+      type: 'confirm',
+      name: 'inCurrentPath',
+      message: 'Generate project in current directory?'
+    })
+    if (inCurrentPath) {
+      return process.cwd()
+    } else {
+      process.exit()
+    }
+  } else {
+    return path.resolve(process.cwd(), name)
+  }
+}
+
+/**
+ * main
+ */
+async function main () {
+  let templateName = program.args[0]
+  let projectName = program.args[1]
+  let templatePath = await getTemplatePath(templateName)
+  let projectPath = await getProjectPath(projectName)
+
+  await fs.copy(templatePath, projectPath)
+  console.log(`it's ok~`)
+}
+
+main()

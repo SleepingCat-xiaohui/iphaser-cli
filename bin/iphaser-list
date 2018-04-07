@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk')
+
+console.log(
+  '  ' + chalk.yellow('★') +
+  '  ' + chalk.blue('default') +
+  ' - ' + 'webpack + ES6')

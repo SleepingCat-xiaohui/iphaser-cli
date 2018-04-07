@@ -1,0 +1,7 @@
+{
+  "templates": [{
+    "name": "default",
+    "desc": "webpack + ES6 + Phaser-2.6.2",
+    "path": "./templates/default"
+  }]
+}
