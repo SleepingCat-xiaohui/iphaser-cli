@@ -35,8 +35,8 @@ async function selectTemplate () {
     choices: config.templates.map((t) => ({
       name: t.name + '(' + t.desc + ').',
       short: t.name,
-      value: t.path
-    }))
+      value: t.path,
+    })),
   })
 }
 
@@ -67,7 +67,7 @@ async function getProjectPath (name) {
     let { inCurrentPath } = await inquirer.prompt({
       type: 'confirm',
       name: 'inCurrentPath',
-      message: 'Generate project in current directory?'
+      message: 'Generate project in current directory?',
     })
     if (inCurrentPath) {
       return process.cwd()

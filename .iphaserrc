@@ -1,0 +1,11 @@
+{
+  "templates": [{
+    "name": "phaser2",
+    "desc": "template based on phaser2.6.2 + webpack + es6.",
+    "repo": "https://github.com/SleepingCat-xiaohui/iphaser-template-phaser2.git"
+  }, {
+    "name": "phaser3",
+    "desc": "template based on phaser3 + webpack + es6",
+    "repo": "https://github.com/SleepingCat-xiaohui/iphaser-template-phaser3.git"
+  }]
+}

@@ -4,12 +4,10 @@
   "description": "CLI for generate a game templete by Phaser.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "node scripts/init-rc.js"
   },
   "bin": {
-    "iphaser": "bin/iphaser",
-    "iphaser-init": "bin/iphaser-init",
-    "iphaser-list": "bin/iphaser-list"
+    "iphaser": "bin/iphaser"
   },
   "repository": {
     "type": "git",
