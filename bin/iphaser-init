@@ -8,7 +8,12 @@ const chalk = require('chalk')
 const inquirer = require('inquirer')
 // const homedir = require('os').homedir()
 
-const config = require('../.iphaserconfig')
+const config = JSON.parse(
+  fs.readFileSync(
+    path.resolve(__dirname, '../.iphaserrc'),
+    { encoding: 'utf-8' }
+  )
+)
 
 /**
  * Program

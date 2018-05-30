@@ -1,13 +1,16 @@
 {
   "name": "iphaser-cli",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.4",
   "description": "CLI for generate a game templete by Phaser.",
   "main": "index.js",
   "scripts": {
     "install": "node scripts/init-rc.js"
   },
   "bin": {
-    "iphaser": "bin/iphaser"
+    "iphaser": "bin/iphaser",
+    "iphaser-init": "bin/iphaser-init",
+    "iphaser-list": "bin/iphaser-list",
+    "iphaser-docs": "bin/iphaser-docs"
   },
   "repository": {
     "type": "git",
