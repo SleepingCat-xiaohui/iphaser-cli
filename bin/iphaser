@@ -1,9 +1,41 @@
 #!/usr/bin/env node
 
-require('commander')
+const program = require('commander')
+
+program
   .version(require('../package.json').version)
-  .usage('<command> [option]')
-  .command('init', 'generate a new project from a template')
-  .command('list', 'list all templates')
-  .command('docs', 'check the phaser document')
-  .parse(process.argv)
+  .usage('<command> [options]')
+
+program
+  .command('create <template-name> [project-name]')
+  .description('  create a new project from a template')
+  .action((template, project) => {
+    require('../lib/create')(template, project)
+  })
+
+program
+  .command('docs <version>')
+  .description('  check the phaser document')
+  .option('-p --port', 'doc server port')
+  .on('--help', () => {
+    console.log(`
+  Version can be:
+
+    2           The v2.6.2 docs
+    3           The v3 docs that can be updated automatically 
+  `)
+  })
+  .action((version, cmd) => {
+    require('../lib/docs')(version, cmd)
+  })
+
+program
+  .command('list')
+  .description('  list all templates')
+  .action(() => {
+    require('../lib/list')()
+  })
+
+program.parse(process.argv)
+
+if (!program.args.length) program.help()

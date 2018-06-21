@@ -1,5 +1,25 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk')
+const program = require('commander')
+const { docs } = require('../.iphaser.config.js')
 
-console.log(chalk.keyword('orange')('Coming soon~'))
+program
+  .usage('<version>')
+  .on('--help', help)
+  .parse(process.argv)
+
+function help () {
+  console.log(`
+  Version can be:
+    2           The v2.6.2 docs
+    3           The v3 docs that can be updated automatically 
+  `)
+}
+if (program.args.length === 0 || ['2', '3'].indexOf(program.args[0]) === -1) program.help()
+
+async function main () {
+  const doc = docs[`v${program.args[0]}`]
+  console.log(doc)
+}
+
+main()
