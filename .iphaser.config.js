@@ -16,7 +16,7 @@ const config = {
     name: 'phaser3',
     desc: 'template based on phaser3 + webpack + es6',
     templateRemote: 'https://github.com/SleepingCat-xiaohui/iphaser-template-phaser3.git',
-    templatePath: path.resolve(__dirname, './storage/templates/v2'),
+    templatePath: path.resolve(__dirname, './storage/templates/v3'),
     docRemote: 'https://github.com/photonstorm/phaser3-docs.git',
     docPull: 'git pull origin master',
     docPath: path.resolve(__dirname, './storage/docs/v3/'),

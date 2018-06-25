@@ -1,28 +1,37 @@
 #!/usr/bin/env node
 
 const program = require('commander')
+const chalk = require('chalk')
 
 program
   .version(require('../package.json').version)
   .usage('<command> [options]')
 
 program
-  .command('create <template-name> [project-name]')
+  .command('create <template> [project]')
   .description('  create a new project from a template')
-  .action((template, project) => {
-    require('../lib/create')(template, project)
+  .option('-o, --offline', 'if cache, use cache')
+  .on('--help', () => {
+    console.log(`
+  Template can be:
+
+    ${chalk.green('phaser2')}           Template based on v2.6.2
+    ${chalk.green('phaser3')}           Template based on v3
+    `)
+  })
+  .action((template, project, cmd) => {
+    require('../lib/create')(template, project, cmd)
   })
 
 program
   .command('docs <version>')
   .description('  check the phaser document')
-  .option('-p --port', 'doc server port')
   .on('--help', () => {
     console.log(`
   Version can be:
 
-    2           The v2.6.2 docs
-    3           The v3 docs that can be updated automatically 
+    ${chalk.green(2)}           The v2.6.2 docs
+    ${chalk.green(3)}           The v3 docs that can be updated automatically 
   `)
   })
   .action((version, cmd) => {
