@@ -1,6 +1,6 @@
 {
   "name": "iphaser-cli",
-  "version": "0.0.1-beta.4",
+  "version": "0.0.2",
   "description": "CLI for generate a game templete by Phaser.",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,8 @@
   },
   "keywords": [
     "phaser",
+    "cli",
+    "es6",
     "html5",
     "game",
     "engine"
